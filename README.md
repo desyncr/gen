@@ -16,12 +16,29 @@ There is only one available command: `gen`, example:
 Above command will clone and load the given plugin.
 
 
-Syntax:
+### Syntax
 
     gen [user/repo] [location]
 
-Usage:
+### Usage
 
 In order to load an specific file:
 
     gen vifon/deer deer
+
+
+## Example configuration
+
+```.zshrc
+
+gen rupa/z
+gen zdharma/fast-syntax-highlighting
+gen zsh-users/zsh-autosuggestions
+gen zsh-users/zsh-completions
+gen psprint/zsh-navigation-tools
+gen hlissner/zsh-autopair
+gen robbyrussell/oh-my-zsh plugins/wd # oh-my-zsh plugin
+gen Tarrasch/zsh-autoenv
+gen frmendes/geometry # theme
+
+```
