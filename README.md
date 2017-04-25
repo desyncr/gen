@@ -31,7 +31,7 @@ In order to load an specific file:
 
 ```.zshrc
 
-gen rupa/z
+gen rupa/z z.sh
 gen zdharma/fast-syntax-highlighting
 gen zsh-users/zsh-autosuggestions
 gen zsh-users/zsh-completions
