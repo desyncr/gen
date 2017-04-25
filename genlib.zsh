@@ -37,36 +37,41 @@ gen\load\auto () {
   fi
 }
 
-# Load from location param unless
+# Load from location (dot-plugin, zsh-theme, zsh, loc)
+# TODO load $loc.sh?
 gen\load\strategy\location () {
   typeset -A plugin; plugin=($@)
-  if [[ ${plugin[loc]} == "" || ${plugin[loc]} == "/" ]]; then
-    return
-  fi
   local loc=${plugin[path]}/${plugin[loc]}
   list+=(${loc}.plugin.zsh(N) ${loc}.zsh-theme(N) ${loc}.zsh(N) ${loc}(N.))
 }
 
+# Load first found dot-plugin
 gen\load\strategy\dot-plugin () {
   typeset -A plugin; plugin=($@)
   list+=(${plugin[path]}/*.plugin.zsh(N[1]))
 }
 
+# Load init.zsh
+# TODO If init.zsh is located in a subdir? -- location may handle it
 gen\load\strategy\init () {
   typeset -A plugin; plugin=($@)
   list+=(${plugin[path]}/init.zsh(N))
 }
 
+# Load first found zsh-theme
 gen\load\strategy\zsh-theme () {
   typeset -A plugin; plugin=($@)
   list+=(${plugin[path]}/*.zsh-theme(N[1]))
 }
 
+# Load all zsh found
+# TODO How can I load all zsh from a given loc, ie loc=bin/tools
 gen\load\strategy\zsh () {
   typeset -A plugin; plugin=($@)
   list+=(${plugin[path]}/*.zsh(N))
 }
 
+# Load all sh found
 gen\load\strategy\sh () {
   typeset -A plugin; plugin=($@)
   list+=(${plugin[path]}/*.sh(N))
