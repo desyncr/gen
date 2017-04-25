@@ -25,11 +25,7 @@ gen\load () {
 
 gen\load\strategy\source () {
   local list=$1
-  for line in $list; do
-    source "$line"
-    return 0
-  done
-
+  source "${line[0]}" && return 0
   return 1
 }
 
