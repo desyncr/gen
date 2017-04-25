@@ -23,7 +23,7 @@ testGenLoad()
   
   typeset -a strategies=(location dot-plugin zsh)
   typeset -Ua list; list=();
-  gen\load\auto 'list' $strategies
+  gen\discover\auto 'list' $strategies
   assertEquals "$plugin_dir/plugin.zsh" "${list[1]}"
 }
 
@@ -37,7 +37,7 @@ testGenLoadLocationStrategy()
   
   typeset -a strategies=(location dot-plugin zsh)
   typeset -Ua list;
-  gen\load\auto 'list' $strategies
+  gen\discover\auto 'list' $strategies
   assertEquals "$plugin_dir/base.plugin.zsh" "${list[1]}"
 }
 
@@ -51,7 +51,7 @@ testGenLoadLocationLocation()
   
   typeset -a strategies=(location dot-plugin zsh)
   typeset -a list;
-  gen\load\auto 'list' $strategies
+  gen\discover\auto 'list' $strategies
   assertEquals "$plugin_dir/base" "${list[1]}"
 
   touch $plugin_dir/base.plugin.zsh
@@ -59,7 +59,7 @@ testGenLoadLocationLocation()
   
   typeset -a strategies=(location dot-plugin zsh)
   typeset -a list; list=()
-  gen\load\auto 'list' $strategies
+  gen\discover\auto 'list' $strategies
   assertEquals "$plugin_dir/base.plugin.zsh" "${list[1]}"
 }
 
