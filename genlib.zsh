@@ -1,4 +1,10 @@
-# Load a given plugin by sourcing it
+# Load a given plugin using configurable load and sourcing strategies
+#
+# Usage:
+#  gen\load $plugin
+#
+# Where `$plugin` is an assoc array in the form:
+#    path /path/to/plugin loc=subdir/in/plugin/path
 gen\load () {
   typeset -A plugin; plugin=($@)
 
