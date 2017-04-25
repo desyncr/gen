@@ -2,7 +2,7 @@
 gen\clone () {
   typeset -A plugin; plugin=($@)
   if [[ -d ${plugin[path]} ]]; then    
-    return 1
+    return 0
   fi
   git clone -- "${plugin[url]}" "${plugin[path]}"
 }
@@ -15,7 +15,7 @@ gen\load () {
   # or loc, for plugin context should only look for .plugin.zsh or loc, if given
   # a loc it should fail when no $loc/$loc.plugin.zsh/$loc.zsh-theme/$loc.zs etc
   # do no exist
-  typeset -a strategies=(location init) # dot-plugin zsh-theme zsh sh)
+  typeset -a strategies=(dot-plugin location init) # zsh-theme zsh sh
   typeset -a list;
   gen\load\list $strategies
 
@@ -110,5 +110,7 @@ gen () {
 
   typeset -A plugin
   gen\parse 'plugin' "$@"
-  gen\clone ${(kv)plugin}
+  if gen\clone ${(kv)plugin}; then
+    gen\load ${(kv)plugin}
+  fi
 }
