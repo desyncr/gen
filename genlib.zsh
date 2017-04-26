@@ -22,8 +22,7 @@ gen\load () {
 # Default sourcing strategy: source
 gen\load\strategy\default () {
   local list=($@)
-  source "${list[1]}" 2>/dev/null && return 0
-  return 1
+  source "${list[1]}" 2>/dev/null
 }
 
 
